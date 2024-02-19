@@ -12,8 +12,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                docker.withRegistry('https://registry.hub.docker.com', 'docker_auth') {
-                    appImage.push()
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker_auth') {
+                        appImage.push()
+                    }
                 }
             }
         }
