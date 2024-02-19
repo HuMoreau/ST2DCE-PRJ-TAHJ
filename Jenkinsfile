@@ -10,13 +10,15 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
+        stage('Docker build') {
+            steps {
+                sh 'docker build -t ST2DCE-PRJ-TAHJ:latest .'
+            }
+        }
         stage('Deploy') {
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_auth') {
-                        appImage.push()
-                    }
-                }
+                sh 'docker tag ST2DCE-PRJ-TAHJ:1.0 anthonypab/ST2DCE-PRJ-TAHJ:latest'
+                sh 'docker image push anthonypab/ST2DCE-PRJ-TAHJ:latest'
             }
         }
     }
