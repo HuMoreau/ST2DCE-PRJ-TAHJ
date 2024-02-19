@@ -12,13 +12,13 @@ pipeline {
         }
         stage('Docker build') {
             steps {
-                sh 'docker build -t ST2DCE-PRJ-TAHJ:latest .'
+                sh 'docker build -t st2dce-prj-tahj:latest .'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'docker tag ST2DCE-PRJ-TAHJ:1.0 anthonypab/ST2DCE-PRJ-TAHJ:latest'
-                sh 'docker image push anthonypab/ST2DCE-PRJ-TAHJ:latest'
+                sh 'docker tag st2dce-prj-tahj:latest anthonypab/st2dce-prj-tahj:latest'
+                sh 'docker image push anthonypab/st2dce-prj-tahj:latest'
             }
         }
     }
