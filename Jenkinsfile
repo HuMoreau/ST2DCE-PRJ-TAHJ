@@ -13,6 +13,7 @@ pipeline {
         stage('Docker build') {
             steps {
                 sh 'ls'
+                sh 'pwd'
                 sh 'docker build -t st2dce-prj-tahj:latest .'
             }
         }
