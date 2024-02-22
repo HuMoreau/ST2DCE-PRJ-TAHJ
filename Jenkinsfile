@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script{
                     appImage = docker.build("thibaulthen/st2dce:${version}",
-                            "--build-arg VERSION=${version} -f ${dockerfile} ./dockerfiles")
+                            "--build-arg VERSION=${version}")
                 }
             }
         }
