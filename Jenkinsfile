@@ -34,6 +34,7 @@ pipeline {
                 script {
                     sh 'echo push image to docker hub'
                     docker.withRegistry('', registryCredentials) {
+                        appImage.push()
                         appImage.push('latest')
                     }
                 }
