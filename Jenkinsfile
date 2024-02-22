@@ -36,6 +36,7 @@ pipeline {
                     docker.withRegistry('', registryCredentials) {
                         appImage.push()
                         appImage.push('latest')
+                        sh 'echo images successfully pushed'
                     }
                 }
             }
