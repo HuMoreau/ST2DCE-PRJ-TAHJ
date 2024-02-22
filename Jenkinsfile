@@ -12,7 +12,7 @@ pipeline {
             agent none
             steps {
                 script {
-                    versionNumber = "1.0.${BUILD_NUMBER}"
+                    version = "1.0.${BUILD_NUMBER}"
                     sh 'echo set version number'
                     sh 'mvn versions:set -DnewVersion=${version}'
                     sh 'echo build package'
