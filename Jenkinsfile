@@ -23,7 +23,6 @@ pipeline {
                     appImage = docker.build("thibaulthen/ST2DCE:${version}",
                             "--build-arg VERSION=${version}",
                             "-f ${dockerfile} ./dockerfiles")
-                    sh 'echo successfully build ${appImage}'
                 }
             }
         }
