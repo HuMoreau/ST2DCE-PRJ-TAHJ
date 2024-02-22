@@ -11,11 +11,13 @@ pipeline {
         stage('Maven build') {
             agent none
             steps {
-                versionNumber = "1.0.${BUILD_NUMBER}"
-                sh 'echo set version number'
-                sh 'mvn versions:set -DnewVersion=${version}'
-                sh 'echo build package'
-                sh 'mvn -B -DskipTests clean package'
+                script {
+                    versionNumber = "1.0.${BUILD_NUMBER}"
+                    sh 'echo set version number'
+                    sh 'mvn versions:set -DnewVersion=${version}'
+                    sh 'echo build package'
+                    sh 'mvn -B -DskipTests clean package'
+                }
             }
         }
         stage('Docker build') {
