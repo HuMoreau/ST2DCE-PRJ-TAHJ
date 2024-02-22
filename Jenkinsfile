@@ -23,7 +23,7 @@ pipeline {
         stage('Docker build') {
             steps {
                 script{
-                    appImage = docker.build("thibaulthen/ST2DCE:${version}",
+                    appImage = docker.build("thibaulthen/st2dce:${version}",
                             "--build-arg VERSION=${version} -f ${dockerfile} ./dockerfiles")
                 }
             }
