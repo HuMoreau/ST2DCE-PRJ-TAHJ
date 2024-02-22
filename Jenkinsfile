@@ -1,6 +1,6 @@
-def dockerfile = 'Dockerfile.jenkins'
 def version = ''
 def appImage = ''
+def registryCredentials = 'dockerhub_id'
 
 pipeline {
     agent any
@@ -22,9 +22,20 @@ pipeline {
         }
         stage('Docker build') {
             steps {
-                script{
+                script {
+                    sh 'echo Build docker image'
                     appImage = docker.build("thibaulthen/st2dce:${version}",
                             "--build-arg VERSION=${version} .")
+                }
+            }
+        }
+        stage('Docker push') {
+            steps {
+                script {
+                    sh 'echo push image to docker hub'
+                    docker.withRegistry('', registryCredentials) {
+                        appImage.push('latest')
+                    }
                 }
             }
         }
