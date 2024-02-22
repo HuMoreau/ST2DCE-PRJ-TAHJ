@@ -14,7 +14,7 @@ pipeline {
                 script {
                     version = "1.0.${BUILD_NUMBER}"
                     sh 'echo set version number'
-                    sh 'mvn versions:set -DnewVersion=${version}'
+                    sh "mvn versions:set -DnewVersion=${version}"
                     sh 'echo build package'
                     sh 'mvn -B -DskipTests clean package'
                 }
