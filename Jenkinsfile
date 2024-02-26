@@ -3,9 +3,7 @@ def appImage = ''
 def registryCredentials = 'dockerhub_id'
 
 pipeline {
-    agent {
-        label 'slave'
-    }
+    agent  all
     tools {
         maven 'maven'
     }
