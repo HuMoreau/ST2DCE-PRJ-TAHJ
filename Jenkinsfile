@@ -44,7 +44,7 @@ pipeline {
         stage('Stage deploy') {
             steps {
                 script {
-                    kubernetesDeploy(configs: "kube/prod")
+                    sh 'kubectl apply -f kube/stage --namespace=st2dce-dev'
                 }
             }
         }
