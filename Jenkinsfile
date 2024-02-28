@@ -48,5 +48,19 @@ pipeline {
                 }
             }
         }
+        stage('Verify connection') {
+            steps {
+                script {
+                    sh 'curl dev.st2dce-tahj.thibaulthenrion.com'
+                }
+            }
+        }
+        stage('prod deploy') {
+            steps {
+                script {
+                    sh 'kubectl apply -f kube/prod --namespace=st2dce-prod'
+                }
+            }
+        }
     }
 }
