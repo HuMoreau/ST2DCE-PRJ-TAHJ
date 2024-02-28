@@ -21,5 +21,3 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 9494
-      ports:
-      - containerPort: 9495

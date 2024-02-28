@@ -15,4 +15,4 @@ spec:
           service:
             name: st2dce-tahj-service
             port: 
-              number: 9495
+              number: 9494

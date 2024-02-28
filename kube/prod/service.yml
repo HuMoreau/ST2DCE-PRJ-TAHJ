@@ -6,5 +6,5 @@ spec:
   selector:
     app: st2dce-tahj
   ports:
-  - port: 9495
-    targetPort: 9495
+  - port: 9494
+    targetPort: 9494
