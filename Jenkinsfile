@@ -44,8 +44,7 @@ pipeline {
         stage('Stage deploy') {
             steps {
                 script {
-                    sh 'minikube start'
-                    sh 'kubectl apply -f kube/stage --namespace=st2dce-dev'
+                    kubernetesDeploy(configs: "kube/prod")
                 }
             }
         }
