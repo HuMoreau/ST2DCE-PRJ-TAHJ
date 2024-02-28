@@ -41,5 +41,12 @@ pipeline {
                 }
             }
         }
+        stage('Stage deploy') {
+            steps {
+                script {
+                    sh 'kubectl apply -f /kube/stage --namespace=st2dce-dev'
+                }
+            }
+        }
     }
 }
