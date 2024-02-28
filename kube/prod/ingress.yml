@@ -6,7 +6,7 @@ metadata:
     name: st2dce-tahj-ingress
 spec:
   rules:
-  - host: dev.st2dce-tahj.thibaulthenrion.com
+  - host: st2dce-tahj.thibaulthenrion.com
     http:
       paths:
       - pathType: Prefix
@@ -15,4 +15,4 @@ spec:
           service:
             name: st2dce-tahj-service
             port: 
-              number: 9494
+              number: 9495
