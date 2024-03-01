@@ -1,0 +1,32 @@
+serverFiles:
+  alerting_rules.yml:
+    groups:
+      - name: appgroup
+        rules:
+        - alert: DeploymentReplicas
+          expr: kube_deployment_status_replicas_available{deployment="st2dce-tahj"} < 2
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Deployment st2dce-tahj has less than 2 replicas available"
+
+alertmanager:
+  config:
+    enabled: true
+    global: {}
+      # slack_api_url: ''
+
+    templates:
+      - '/etc/alertmanager/*.tmpl'
+
+    receivers:
+      - name: default-receiver
+        webhook_configs:
+          - url: 'http://alertmanager-webhook-service:5001'
+
+    route:
+      group_wait: 10s
+      group_interval: 5m
+      receiver: default-receiver
+      repeat_interval: 3h

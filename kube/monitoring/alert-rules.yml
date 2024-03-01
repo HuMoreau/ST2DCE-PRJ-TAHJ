@@ -1,0 +1,10 @@
+groups:
+- name: mygroup
+  rules:
+  - alert: DeploymentReplicas
+    expr: kube_deployment_status_replicas_available{deployment="st2dce-tahj"} < 2
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Deployment st2dce-tahj has less than 2 replicas available"
